@@ -1,20 +1,8 @@
-import Vue from "vue";
+import { createApp } from "vue";
 import App from "./App.vue";
-
-import hljs from "highlight.js";
-import "highlight.js/styles/railscasts.css";
 
 import ColorPicker from "./../packages/index";
 
-Vue.directive("hljs", (el) => {
-  let blocks = el.querySelectorAll("pre");
-  Array.prototype.forEach.call(blocks, hljs.highlightBlock);
-});
+const app = createApp(App);
 
-Vue.use(ColorPicker);
-
-Vue.config.productionTip = false;
-
-new Vue({
-  render: (h) => h(App),
-}).$mount("#app");
+app.use(ColorPicker).mount("#app", true);
